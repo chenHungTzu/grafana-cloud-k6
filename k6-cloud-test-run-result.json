@@ -465,7 +465,7 @@
           "aggregation": "value",
           "body": {
             "config": {
-              "label": "increase(http_reqs)",
+              "label": "rate(http_reqs)",
               "name": "http_reqs",
               "plot": {
                 "style": "solid",
@@ -473,13 +473,13 @@
               },
               "query": {
                 "groupBy": [],
-                "method": "increase",
+                "method": "rate",
                 "metric": "http_reqs",
                 "tags": {},
                 "type": "series"
               },
               "type": "metric",
-              "unit": "requests"
+              "unit": "reqps"
             },
             "projectId": "$project",
             "testId": "$test",
@@ -533,19 +533,16 @@
       "title": "Throughput",
       "transformations": [
         {
-          "id": "calculateField",
+          "filter": {
+            "id": "byRefId",
+            "options": "A"
+          },
+          "id": "renameByRegex",
           "options": {
-            "alias": "rd/s",
-            "binary": {
-              "left": "http_reqs",
-              "operator": "/",
-              "right": "vus"
-            },
-            "mode": "binary",
-            "reduce": {
-              "reducer": "sum"
-            }
-          }
+            "regex": "(.*)",
+            "renamePattern": "req/s"
+          },
+          "topic": "series"
         }
       ],
       "type": "timeseries"
@@ -619,7 +616,7 @@
           }
         ]
       },
-      "pluginVersion": "11.1.0-68838",
+      "pluginVersion": "11.1.0-68851",
       "targets": [
         {
           "body": {
@@ -706,7 +703,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "11.1.0-68838",
+      "pluginVersion": "11.1.0-68851",
       "targets": [
         {
           "body": {
@@ -785,7 +782,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "11.1.0-68838",
+      "pluginVersion": "11.1.0-68851",
       "targets": [
         {
           "body": {
@@ -1369,7 +1366,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "Default project",
           "value": "3682509"
         },
@@ -1402,7 +1399,7 @@
       },
       {
         "current": {
-          "selected": false,
+          "selected": true,
           "text": "test1.js",
           "value": "878607"
         },
@@ -1436,7 +1433,7 @@
       },
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "2024-04-02 22:38:45",
           "value": "2617602"
         },
@@ -1472,7 +1469,7 @@
     ]
   },
   "time": {
-    "from": "2024-04-02T14:39:06.000Z",
+    "from": "2024-04-02T14:38:57.000Z",
     "to": "2024-04-02T14:40:09.000Z"
   },
   "timeRangeUpdatedDuringEditOrView": false,
@@ -1493,6 +1490,6 @@
   "timezone": "",
   "title": "k6 Cloud Test Run Result",
   "uid": "k6-cloud-test-run",
-  "version": 20,
+  "version": 21,
   "weekStart": ""
 }
