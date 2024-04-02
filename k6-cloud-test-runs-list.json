@@ -1,0 +1,283 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 26,
+  "links": [],
+  "panels": [
+    {
+      "datasource": {
+        "type": "k6-datasource",
+        "uid": "$datasource"
+      },
+      "description": "List of k6 Cloud test runs.",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "inspect": false
+          },
+          "links": [],
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Test Run ID"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 88
+              },
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "Click to view results",
+                    "url": "/d/k6-cloud-test-run/test-run?orgId=$__org&refresh=1m&var-datasource=$datasource&var-organization=$organization&var-project=$project&var-test=$test&var-testrun=${__data.fields[0]}&from=${__data.fields[9]}&to=${__data.fields[10]}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VUs"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Duration"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 25,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Created"
+          }
+        ]
+      },
+      "pluginVersion": "11.1.0-68838",
+      "targets": [
+        {
+          "body": {
+            "config": {
+              "type": "tests"
+            },
+            "projectId": "$project",
+            "type": "testrun"
+          },
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "projectId": "$project",
+          "qtype": 0,
+          "refId": "A",
+          "testId": "$test",
+          "testRunId": "",
+          "version": 4
+        }
+      ],
+      "title": "k6 Cloud Test Runs",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Organization ID": true,
+              "Test Created": true,
+              "Test ID": true,
+              "VUs": false
+            },
+            "includeByName": {},
+            "indexByName": {
+              "Test Run Created": 1,
+              "Test Run Duration": 7,
+              "Test Run Ended": 3,
+              "Test Run Ended Epoch": 10,
+              "Test Run ID": 0,
+              "Test Run Load Time": 8,
+              "Test Run Result Status": 5,
+              "Test Run Started": 2,
+              "Test Run Started Epoch": 9,
+              "Test Run Status": 4,
+              "Test Run VUs": 6
+            },
+            "renameByName": {
+              "Test Run Created": "Created",
+              "Test Run Duration": "Duration",
+              "Test Run Ended": "Ended",
+              "Test Run Ended Epoch": "Ended Epoch",
+              "Test Run Load Time": "Response time",
+              "Test Run Result Status": "Result Status",
+              "Test Run Started": "Started",
+              "Test Run Started Epoch": "Started Epoch",
+              "Test Run Status": "Status",
+              "Test Run VUs": "VUs",
+              "VUs": "",
+              "id": "",
+              "last_run_id": ""
+            }
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "refresh": "1m",
+  "schemaVersion": 39,
+  "tags": [
+    "k6-cloud"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Grafana Cloud k6",
+          "value": "Grafana Cloud k6"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Datasource",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "k6-datasource",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Default project",
+          "value": "3682509"
+        },
+        "datasource": {
+          "type": "k6-datasource",
+          "uid": "${datasource}"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Project",
+        "multi": false,
+        "name": "project",
+        "options": [],
+        "query": {
+          "config": {
+            "type": "project"
+          },
+          "refId": "",
+          "version": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timeRangeUpdatedDuringEditOrView": false,
+  "timepicker": {
+    "refresh_intervals": [
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "k6 Cloud Test Runs List",
+  "uid": "k6-cloud-test-runs",
+  "version": 5,
+  "weekStart": ""
+}
