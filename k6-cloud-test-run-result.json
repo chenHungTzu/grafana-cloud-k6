@@ -685,36 +685,7 @@
             ]
           }
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Successful"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "auto"
-                }
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Failed"
-            },
-            "properties": [
-              {
-                "id": "custom.cellOptions",
-                "value": {
-                  "type": "auto"
-                }
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -1379,7 +1350,7 @@
     "list": [
       {
         "current": {
-          "selected": true,
+          "selected": false,
           "text": "Grafana Cloud k6",
           "value": "Grafana Cloud k6"
         },
@@ -1398,9 +1369,9 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": "DemoTest",
-          "value": "3688823"
+          "selected": false,
+          "text": "Default project",
+          "value": "3682509"
         },
         "datasource": {
           "type": "k6-datasource",
@@ -1431,9 +1402,9 @@
       },
       {
         "current": {
-          "selected": true,
-          "text": "test.js",
-          "value": "877840"
+          "selected": false,
+          "text": "test1.js",
+          "value": "878607"
         },
         "datasource": {
           "type": "k6-datasource",
@@ -1465,9 +1436,9 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "2024-03-29 17:54:19",
-          "value": "2605232"
+          "selected": true,
+          "text": "2024-04-02 22:38:45",
+          "value": "2617602"
         },
         "datasource": {
           "type": "k6-datasource",
@@ -1501,8 +1472,8 @@
     ]
   },
   "time": {
-    "from": "2024-03-29T09:54:51.000Z",
-    "to": "2024-03-29T09:56:36.000Z"
+    "from": "2024-04-02T14:39:06.000Z",
+    "to": "2024-04-02T14:40:09.000Z"
   },
   "timeRangeUpdatedDuringEditOrView": false,
   "timepicker": {
@@ -1522,6 +1493,6 @@
   "timezone": "",
   "title": "k6 Cloud Test Run Result",
   "uid": "k6-cloud-test-run",
-  "version": 18,
+  "version": 20,
   "weekStart": ""
 }
