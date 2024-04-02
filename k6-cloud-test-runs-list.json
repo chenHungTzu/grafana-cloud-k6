@@ -56,27 +56,6 @@
           {
             "matcher": {
               "id": "byName",
-              "options": "Test Run ID"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 88
-              },
-              {
-                "id": "links",
-                "value": [
-                  {
-                    "title": "Click to view results",
-                    "url": "/d/k6-cloud-test-run/test-run?orgId=$__org&refresh=1m&var-datasource=$datasource&var-organization=$organization&var-project=$project&var-test=$test&var-testrun=${__data.fields[0]}&from=${__data.fields[9]}&to=${__data.fields[10]}"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
               "options": "VUs"
             },
             "properties": [
@@ -278,6 +257,6 @@
   "timezone": "",
   "title": "k6 Cloud Test Runs List",
   "uid": "k6-cloud-test-runs",
-  "version": 5,
+  "version": 8,
   "weekStart": ""
 }
