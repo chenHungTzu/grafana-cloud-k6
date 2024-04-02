@@ -1,0 +1,1527 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 27,
+  "links": [
+    {
+      "icon": "dashboard",
+      "includeVars": true,
+      "tags": [],
+      "title": "Back to test list",
+      "tooltip": "Open test list dashboard",
+      "type": "link",
+      "url": "/d/k6-cloud-test-runs/test-runs-list?orgId=$__org&refresh=1m&var-datasource=$datasource&var-organization=$organization&var-project=$project&var-test=$test"
+    }
+  ],
+  "panels": [
+    {
+      "datasource": {
+        "type": "k6-datasource",
+        "uid": "${datasource}"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "fieldMinMax": true,
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "maxHeight": 600,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.1.0-68825",
+      "targets": [
+        {
+          "aggregation": "median",
+          "body": {
+            "config": {
+              "label": "histogram_max(http_req_duration)",
+              "name": "http_req_duration",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "histogram_max",
+                "metric": "http_req_duration",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "ms"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "type": "k6-datasource",
+            "uid": "${datasource}"
+          },
+          "metric": "http_req_duration",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "A",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        },
+        {
+          "body": {
+            "config": {
+              "label": "histogram_quantile(0.99)(http_req_duration)",
+              "name": "http_req_duration",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "histogram_quantile(0.99)",
+                "metric": "http_req_duration",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "ms"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "type": "k6-datasource",
+            "uid": "${datasource}"
+          },
+          "hide": false,
+          "refId": "E",
+          "version": 4
+        },
+        {
+          "aggregation": "mean",
+          "body": {
+            "config": {
+              "label": "histogram_quantile(0.95)(http_req_duration)",
+              "name": "http_req_duration",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "histogram_quantile(0.95)",
+                "metric": "http_req_duration",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "ms"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "type": "k6-datasource",
+            "uid": "${datasource}"
+          },
+          "metric": "http_req_duration",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "B",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        },
+        {
+          "aggregation": "p(99)",
+          "body": {
+            "config": {
+              "label": "histogram_quantile(0.50)(http_req_duration)",
+              "name": "http_req_duration",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "histogram_quantile(0.50)",
+                "metric": "http_req_duration",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "ms"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "type": "k6-datasource",
+            "uid": "${datasource}"
+          },
+          "metric": "http_req_duration",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "D",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        },
+        {
+          "aggregation": "p(95)",
+          "body": {
+            "config": {
+              "label": "histogram_min(http_req_duration)",
+              "name": "http_req_duration",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "histogram_min",
+                "metric": "http_req_duration",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "ms"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "type": "k6-datasource",
+            "uid": "${datasource}"
+          },
+          "metric": "http_req_duration",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "C",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        }
+      ],
+      "title": "Response time",
+      "transformations": [
+        {
+          "filter": {
+            "id": "byRefId",
+            "options": "A"
+          },
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*)",
+            "renamePattern": "http_req_duration(max)"
+          },
+          "topic": "series"
+        },
+        {
+          "filter": {
+            "id": "byRefId",
+            "options": "B"
+          },
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*)",
+            "renamePattern": "http_req_duration(p95)"
+          },
+          "topic": "series"
+        },
+        {
+          "filter": {
+            "id": "byRefId",
+            "options": "C"
+          },
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*)",
+            "renamePattern": "http_req_duration(min)"
+          },
+          "topic": "series"
+        },
+        {
+          "filter": {
+            "id": "byRefId",
+            "options": "D"
+          },
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*)",
+            "renamePattern": "http_req_duration(medium)"
+          },
+          "topic": "series"
+        },
+        {
+          "filter": {
+            "id": "byRefId",
+            "options": "E"
+          },
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*)",
+            "renamePattern": "http_req_duration(p99)"
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "k6-datasource",
+        "uid": "$datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "rps"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "vus"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "VUs"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "maxHeight": 600,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.1.0-68825",
+      "targets": [
+        {
+          "aggregation": "value",
+          "body": {
+            "config": {
+              "label": "increase(http_reqs)",
+              "name": "http_reqs",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "increase",
+                "metric": "http_reqs",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "requests"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "metric": "vus",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "A",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        },
+        {
+          "body": {
+            "config": {
+              "label": "sum(last by (instance_id))(vus)",
+              "name": "vus",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "sum(last by (instance_id))",
+                "metric": "vus",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "VUs"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "type": "k6-datasource",
+            "uid": "$datasource"
+          },
+          "hide": false,
+          "refId": "B",
+          "version": 4
+        }
+      ],
+      "title": "Throughput",
+      "transformations": [
+        {
+          "id": "calculateField",
+          "options": {
+            "alias": "rd/s",
+            "binary": {
+              "left": "http_reqs",
+              "operator": "/",
+              "right": "vus"
+            },
+            "mode": "binary",
+            "reduce": {
+              "reducer": "sum"
+            }
+          }
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "k6-datasource",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Response time (P95)"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 176
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 16,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Load distribution"
+          }
+        ]
+      },
+      "pluginVersion": "11.1.0-68838",
+      "targets": [
+        {
+          "body": {
+            "config": {
+              "type": "testRuns"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "type": "k6-datasource",
+            "uid": "${datasource}"
+          },
+          "projectId": "$project",
+          "qtype": 4,
+          "refId": "A",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        }
+      ],
+      "title": "Thresholds",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {}
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "k6-datasource",
+        "uid": "$datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-text"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0
+              },
+              {
+                "color": "green",
+                "value": 100
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Successful"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Failed"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "auto"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 8
+      },
+      "id": 14,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.1.0-68838",
+      "targets": [
+        {
+          "body": {
+            "config": {
+              "type": "checks"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "projectId": "$project",
+          "qtype": 3,
+          "refId": "A",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        }
+      ],
+      "title": "Checks",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "k6-datasource",
+        "uid": "Grafana Cloud k6"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 16
+      },
+      "id": 17,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.1.0-68838",
+      "targets": [
+        {
+          "body": {
+            "config": {
+              "type": "http"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "type": "k6-datasource",
+            "uid": "Grafana Cloud k6"
+          },
+          "refId": "A",
+          "version": 4
+        }
+      ],
+      "title": "URLs",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "k6-datasource",
+        "uid": "$datasource"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 24
+      },
+      "id": 10,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "maxHeight": 600,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "7.1.5",
+      "targets": [
+        {
+          "aggregation": "p(95)",
+          "body": {
+            "config": {
+              "label": "histogram_quantile(0.95)(http_req_connecting)",
+              "name": "http_req_connecting",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "histogram_quantile(0.95)",
+                "metric": "http_req_connecting",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "ms"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "metric": "http_req_connecting",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "A",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        },
+        {
+          "aggregation": "p(95)",
+          "body": {
+            "config": {
+              "label": "histogram_quantile(0.95)(http_req_tls_handshaking)",
+              "name": "http_req_tls_handshaking",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "histogram_quantile(0.95)",
+                "metric": "http_req_tls_handshaking",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "ms"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "metric": "http_req_tls_handshaking",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "B",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        },
+        {
+          "aggregation": "p(95)",
+          "body": {
+            "config": {
+              "label": "histogram_quantile(0.95)(http_req_connecting)",
+              "name": "http_req_connecting",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "histogram_quantile(0.95)",
+                "metric": "http_req_connecting",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "ms"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "metric": "http_req_sending",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "D",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        },
+        {
+          "aggregation": "p(95)",
+          "body": {
+            "config": {
+              "label": "histogram_quantile(0.95)(http_req_sending)",
+              "name": "http_req_sending",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "histogram_quantile(0.95)",
+                "metric": "http_req_sending",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "ms"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "metric": "http_req_waiting",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "E",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        },
+        {
+          "aggregation": "p(95)",
+          "body": {
+            "config": {
+              "label": "histogram_quantile(0.95)(http_req_waiting)",
+              "name": "http_req_waiting",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "histogram_quantile(0.95)",
+                "metric": "http_req_waiting",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "ms"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "hide": true,
+          "metric": "http_req_receiving",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "F",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        },
+        {
+          "body": {
+            "config": {
+              "label": "histogram_quantile(0.95)(http_req_receiving)",
+              "name": "http_req_receiving",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "histogram_quantile(0.95)",
+                "metric": "http_req_receiving",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "ms"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "type": "k6-datasource",
+            "uid": "$datasource"
+          },
+          "hide": false,
+          "refId": "G",
+          "version": 4
+        }
+      ],
+      "title": "Response time breakdown (95th percentile)",
+      "transformations": [
+        {
+          "filter": {
+            "id": "byRefId",
+            "options": "A"
+          },
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*)",
+            "renamePattern": "http_req_connection(p95)"
+          },
+          "topic": "series"
+        },
+        {
+          "filter": {
+            "id": "byRefId",
+            "options": "B"
+          },
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*)",
+            "renamePattern": "http_req_tls_handshaking(p95)"
+          },
+          "topic": "series"
+        },
+        {
+          "filter": {
+            "id": "byRefId",
+            "options": "D"
+          },
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*)",
+            "renamePattern": "http_req_connecting(p95)"
+          },
+          "topic": "series"
+        },
+        {
+          "filter": {
+            "id": "byRefId",
+            "options": "E"
+          },
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*)",
+            "renamePattern": "http_req_sending(p95)"
+          },
+          "topic": "series"
+        },
+        {
+          "filter": {
+            "id": "byRefId",
+            "options": "F"
+          },
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*)",
+            "renamePattern": "http_req_waiting(p95)"
+          },
+          "topic": "series"
+        },
+        {
+          "filter": {
+            "id": "byRefId",
+            "options": "G"
+          },
+          "id": "renameByRegex",
+          "options": {
+            "regex": "(.*)",
+            "renamePattern": "http_req_receiving(p95)"
+          },
+          "topic": "series"
+        }
+      ],
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "k6-datasource",
+        "uid": "$datasource"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bps"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 24
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "maxHeight": 600,
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "7.1.5",
+      "targets": [
+        {
+          "aggregation": "rps",
+          "body": {
+            "config": {
+              "label": "rate(data_sent)",
+              "name": "data_sent",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "rate",
+                "metric": "data_sent",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "Bps"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "metric": "data_sent",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "A",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        },
+        {
+          "aggregation": "rps",
+          "body": {
+            "config": {
+              "label": "rate(data_received)",
+              "name": "data_received",
+              "plot": {
+                "style": "solid",
+                "type": "line"
+              },
+              "query": {
+                "groupBy": [],
+                "method": "rate",
+                "metric": "data_received",
+                "tags": {},
+                "type": "series"
+              },
+              "type": "metric",
+              "unit": "Bps"
+            },
+            "projectId": "$project",
+            "testId": "$test",
+            "testRunId": "$testrun",
+            "type": "testrun"
+          },
+          "datasource": {
+            "uid": "$datasource"
+          },
+          "metric": "data_received",
+          "projectId": "$project",
+          "qtype": 1,
+          "refId": "B",
+          "testId": "$test",
+          "testRunId": "$testrun",
+          "version": 4
+        }
+      ],
+      "title": "Data transfer",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 39,
+  "tags": [
+    "k6-cloud"
+  ],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": "Grafana Cloud k6",
+          "value": "Grafana Cloud k6"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "label": "Datasource",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "k6-datasource",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "DemoTest",
+          "value": "3688823"
+        },
+        "datasource": {
+          "type": "k6-datasource",
+          "uid": "Grafana Cloud k6"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Project",
+        "multi": false,
+        "name": "project",
+        "options": [],
+        "query": {
+          "config": {
+            "type": "project"
+          },
+          "refId": "",
+          "version": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": "test.js",
+          "value": "877840"
+        },
+        "datasource": {
+          "type": "k6-datasource",
+          "uid": "Grafana Cloud k6"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Test",
+        "multi": false,
+        "name": "test",
+        "options": [],
+        "query": {
+          "config": {
+            "projectId": "$project",
+            "type": "test"
+          },
+          "refId": "",
+          "version": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "2024-03-29 17:54:19",
+          "value": "2605232"
+        },
+        "datasource": {
+          "type": "k6-datasource",
+          "uid": "Grafana Cloud k6"
+        },
+        "definition": "",
+        "hide": 0,
+        "includeAll": false,
+        "label": "Test Run",
+        "multi": false,
+        "name": "testrun",
+        "options": [],
+        "query": {
+          "config": {
+            "projectId": "$project",
+            "testId": "$test",
+            "type": "testRun"
+          },
+          "refId": "",
+          "version": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "2024-03-29T09:54:51.000Z",
+    "to": "2024-03-29T09:56:36.000Z"
+  },
+  "timeRangeUpdatedDuringEditOrView": false,
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "k6 Cloud Test Run Result",
+  "uid": "k6-cloud-test-run",
+  "version": 18,
+  "weekStart": ""
+}
